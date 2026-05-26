@@ -15,16 +15,20 @@ function useIsMobile(breakpoint = 768) {
 }
 
 const PEOPLE = [
-  { name: "Rafael", role: "General Coordination / Timer", color: "#0a3fa8", available: "10:00 →" },
+  { name: "Rafael", role: "General Coordination / Timer / S7", color: "#0a3fa8", available: "10:00 →" },
   { name: "Dr. Peñaloza", role: "Welcome / Supervision", color: "#7c3aed", available: "10:00 →" },
-  { name: "Daniel", role: "S3, S10, S13", color: "#7c3aed", available: "→ 13:30 (leaves)" },
+  { name: "Daniel", role: "S3 (Avatar)", color: "#7c3aed", available: "→ 13:30 (leaves)" },
   { name: "Francisco", role: "CanSat (S11) / Roving Coord.", color: "#d97706", available: "10:00 →" },
-  { name: "Rene", role: "Logistics / Signage", color: "#16a34a", available: "10:00 →" },
-  { name: "Jonhatan", role: "Assigned exhibit", color: "#1565c0", available: "10:00 →" },
-  { name: "Saulo", role: "Assigned exhibit", color: "#1565c0", available: "10:00 →" },
-  { name: "Claudia", role: "Assigned exhibit", color: "#1565c0", available: "10:00 →" },
-  { name: "Barrie", role: "Assigned exhibit", color: "#1565c0", available: "10:00 →" },
-  { name: "Hired Mentor 0", role: "Assigned exhibit", color: "#1565c0", available: "10:00 →" },
+  { name: "Rene", role: "S5 (Relaxation VR)", color: "#16a34a", available: "10:00 →" },
+  { name: "Saulo", role: "S1 (Robot Dog)", color: "#1565c0", available: "10:00 →" },
+  { name: "Hazu", role: "S13 (Pose Estimation)", color: "#1565c0", available: "10:00 →" },
+  { name: "Kaori", role: "S2 (Pepper Robot)", color: "#1565c0", available: "10:00 →" },
+  { name: "Yoshoka", role: "S15 (Web Teleoperation)", color: "#1565c0", available: "10:00 →" },
+  { name: "Claudia", role: "S6 (Neurotraining)", color: "#1565c0", available: "10:00 →" },
+  { name: "Jonathan", role: "S14 (Teleoperation Excavator)", color: "#1565c0", available: "10:00 →" },
+  { name: "Barrie", role: "S8 (Exoskeleton)", color: "#1565c0", available: "10:00 →" },
+  { name: "Danier Arg", role: "S9 (VR Phobias)", color: "#1565c0", available: "10:00 →" },
+  { name: "Mark Pho", role: "S4 (Stroop / Cognitive)", color: "#1565c0", available: "10:00 →" },
 ];
 
 const EXHIBITS = [
@@ -46,19 +50,18 @@ const EXHIBITS = [
 ];
 
 const INITIAL_ASSIGNMENTS = {
-  S1: "Unassigned", S2: "Unassigned", S3: "Daniel", S4: "Jonhatan",
-  S5: "Unassigned", S6: "Unassigned", S7: "Unassigned",
-  S8: "Saulo", S9: "Unassigned", S10: "Daniel",
-  S11: "Francisco", S12: "Unassigned", S13: "Daniel",
-  S14: "Claudia", S15: "Unassigned",
+  S1: "Saulo", S2: "Kaori", S3: "Daniel", S4: "Mark Pho",
+  S5: "Rene", S6: "Claudia", S7: "Rafael",
+  S8: "Barrie", S9: "Danier Arg", S10: "Unassigned",
+  S11: "Francisco", S12: "Unassigned", S13: "Hazu",
+  S14: "Jonathan", S15: "Yoshoka",
 };
 
 const ASSIGNABLE = [
   "Rafael", "Dr. Peñaloza", "Daniel", "Francisco", "Rene",
-  "Jonhatan", "Saulo", "Claudia",
-  "Barrie", "Hired Mentor 0",
+  "Saulo", "Hazu", "Kaori", "Yoshoka", "Claudia",
+  "Jonathan", "Barrie", "Danier Arg", "Mark Pho",
   "Hired Mentor 1", "Hired Mentor 2", "Hired Mentor 3",
-  "Hired Mentor 4", "Hired Mentor 5",
   "Unassigned"
 ];
 
