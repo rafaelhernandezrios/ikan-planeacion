@@ -128,6 +128,29 @@ const DAY2_PHASES = [
   },
 ];
 
+const DAY3_PHASES = [
+  {
+    time: "15:00 — 15:50", label: "Prep · Power-on & Verification", tag: "Everything must be ready by 15:50",
+    rows: [
+      { time: "15:00", who: ["Everyone"], title: "Arrival — power on exhibits", desc: "Each mentor turns on their exhibit and does a quick 2-min test. If something fails, Rafael has 40 min to fix it.", result: ["14 exhibits powered on"] },
+      { time: "15:20", who: ["Rafael"], title: "Final verification round", desc: "Walk the circuit confirming everything. Local network, Oculus battery, audible rotation signal.", result: ["All green", "Signal tested"] },
+      { time: "15:40", who: ["Rafael"], title: "Final 10-min briefing", desc: "Dynamics: signal every 6 min, don't leave your spot, what to do if it fails, start signal given by Rafael. Group WhatsApp active.", result: ["Team ready"] },
+      { time: "15:50", who: ["Everyone"], title: "Everyone at their spot — standby", desc: "Each mentor at their exhibit, powered on and ready. Waiting for students to arrive at the auditorium.", result: ["Circuit 100% ready"] },
+    ]
+  },
+  {
+    time: "16:00 — 18:00+", label: "Live Exhibition", tag: "Relative times from T+0 = students arrive",
+    rows: [
+      { time: "T+0", who: ["Dr. Peñaloza"], title: "Welcome speech + Mirai presentation (7 min)", desc: "Auditorium. S1 appears at the end. Explanation of the tour dynamics.", result: ["Students motivated"] },
+      { time: "T+9", who: ["IKan Team"], title: "IKan intro (2 min) + mentors form groups", desc: "Mentors exit the auditorium in stages. Each one leads ~10 students to their exhibit.", result: ["10 groups in position"] },
+      { time: "T+15", who: ["Rafael"], title: "🔁 Tour start signal", desc: "Rafael = Central Coordinator. Gives the signal when everyone confirms position. 6-min timer starts.", result: ["Tour started"] },
+      { time: "T+15→T+99", who: ["Everyone"], title: "14 rounds × 6 min — rotate right", desc: "Rafael manages the timer and signal. Francisco circulates checking progress and providing support.", result: ["100 students see 14 exhibits"], note: "Francisco = Roving Coordinator" },
+      { time: "T+105", who: ["IKan Team"], title: "Video report assignment (5 min)", desc: "IKan hands out the list. 30 min of team work. Mentors available for interviews.", result: ["IKan activity complete"] },
+      { time: "T+140", who: ["Dr. Peñaloza"], title: "Official closing", desc: "Thank-yous. Students leave. +1h buffer if it runs long. Estimated end: 18:00–19:00.", result: ["Exhibition completed ✓"] },
+    ]
+  },
+];
+
 const getStyles = (m) => ({
   app: { background: "#f0f4fa", minHeight: "100vh", fontFamily: "'Inter', system-ui, sans-serif", fontSize: 13, color: "#0d1a2e" },
   header: { background: "#071530", padding: m ? "24px 16px 20px" : "36px 40px 28px", color: "#fff" },
@@ -272,10 +295,11 @@ export default function App() {
       {/* HEADER */}
       <div style={s.header}>
         <div style={s.eyebrow}>Mirai Innovation Research Institute · Execution Plan</div>
-        <div style={s.h1}>Day 1 — Setup · <span style={s.h1span}>Day 2 — Exhibition</span></div>
+        <div style={s.h1}>Day 1 — Setup · <span style={s.h1span}>Day 2 & 3 — Exhibition</span></div>
         <div style={{ display: "flex", gap: mobile ? 12 : 24, fontSize: mobile ? 10 : 11, color: "rgba(255,255,255,0.5)", flexWrap: "wrap" }}>
           <span><strong style={{color:"rgba(255,255,255,0.8)"}}>Day 1:</strong> Setup + Training + Trial Run</span>
           <span><strong style={{color:"rgba(255,255,255,0.8)"}}>Day 2:</strong> Live Exhibition · 16:00–18:00</span>
+          <span><strong style={{color:"rgba(255,255,255,0.8)"}}>Day 3:</strong> Live Exhibition · 16:00–18:00</span>
         </div>
       </div>
 
@@ -285,6 +309,7 @@ export default function App() {
           ["assignments", mobile ? "👥 People" : "👥 People & Spots"],
           ["day1", mobile ? "📦 Day 1" : "📦 Day 1 — Setup"],
           ["day2", mobile ? "🎯 Day 2" : "🎯 Day 2 — Exhibition"],
+          ["day3", mobile ? "🎯 Day 3" : "🎯 Day 3 — Exhibition"],
           ["spots", mobile ? "📋 Spots" : "📋 Individual Spots"],
         ].map(([k, label]) => (
           <button key={k} style={s.navBtn(page === k)} onClick={() => setPage(k)}>{label}</button>
@@ -386,6 +411,20 @@ export default function App() {
             </div>
           </div>
           {DAY2_PHASES.map((phase, i) => renderPhase(phase, i))}
+        </div>
+      )}
+
+      {/* DAY 3 */}
+      {page === "day3" && (
+        <div>
+          <div style={s.dayHeader(true)}>
+            <div style={s.dayLabel}>DAY 3</div>
+            <div style={s.dayDesc}>
+              Live exhibition · Students arrive at 16:00 · End 18:00 (+1h buffer)<br />
+              <strong style={{ color: "#fff" }}>Everything powered on and ready by 15:50</strong>
+            </div>
+          </div>
+          {DAY3_PHASES.map((phase, i) => renderPhase(phase, i))}
         </div>
       )}
 
